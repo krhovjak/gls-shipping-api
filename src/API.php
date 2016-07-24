@@ -25,13 +25,15 @@ class API {
 	const STATUS_CLIENT_NOT_AT_HOME = '12-Consignee is not at home';
 
 	protected $urls = [
-		'HU' => 'http://online.gls-hungary.com/webservices/soap_server.php?wsdl&ver=14.05.20.01',
-		'SK' => 'http://online.gls-slovakia.sk/webservices/soap_server.php?wsdl&ver=14.05.20.01',
-		'CZ' => 'http://online.gls-czech.com/webservices/soap_server.php?wsdl&ver=14.05.20.01',
-		'RO' => 'http://online.gls-romania.ro/webservices/soap_server.php?wsdl&ver=14.05.20.01',
-		'SI' => 'http://connect.gls-slovenia.com/webservices/soap_server.php?wsdl&ver=14.05.20.01',
-		'HR' => 'http://online.gls-croatia.com/webservices/soap_server.php?wsdl&ver=14.05.20.01',
+		'HU' => 'http://online.gls-hungary.com/',
+		'SK' => 'http://online.gls-slovakia.sk/',
+		'CZ' => 'http://online.gls-czech.com/',
+		'RO' => 'http://online.gls-romania.ro/',
+		'SI' => 'http://connect.gls-slovenia.com/',
+		'HR' => 'http://online.gls-croatia.com/',
 	];
+
+	protected $urlSoap = 'webservices/soap_server.php?wsdl&ver=14.05.20.01';
 
 	protected $countryCode = '';
 
@@ -110,7 +112,9 @@ class API {
 	}
 
 	public function getTrackingUrl($parcelNumber, $language = 'en') {
-		return "http://online.gls-hungary.com/tt_page.php?tt_value=$parcelNumber&lng=$language";
+		if (empty($this->urls[$this->countryCode])) throw new Exception('Wrong country code - ' . $this->countryCode);
+
+    	return $this->urls[$this->countryCode] . "tt_page.php?tt_value=$parcelNumber&lng=$language";
 	}
 
 	/**
@@ -152,6 +156,6 @@ class API {
 	{
 		if (empty($this->urls[$this->countryCode])) throw new Exception('Wrong country code - ' . $this->countryCode);
 
-		return $this->urls[$this->countryCode];
+		return $this->urls[$this->countryCode] . $this->urlSoap;
 	}
 }
