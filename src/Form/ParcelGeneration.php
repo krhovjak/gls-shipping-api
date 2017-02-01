@@ -184,7 +184,7 @@ class ParcelGeneration extends Form {
 
 	public function toArray()
 	{
-		$this->timestamp = (new \DateTime('now', new \DateTimeZone('Europe/Budapest')))->format('YmdHis');
+		$this->timestamp = (new \DateTime('now', new \DateTimeZone('Europe/Bucharest')))->format('YmdHis');
 		$data            = parent::toArray();
 		if ($this->services) $data[ 'services' ] = array_map(function (ParcelService $srv)
 		{
