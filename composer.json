@@ -1,26 +1,29 @@
 {
-    "name": "ghs/gls-shipping-api",
+    "name": "krhovjak/gls-shipping-api",
     "description": "GLS Shipping & Tracking API",
     "license": "GPL-3.0",
     "authors": [
         {
             "name": "And",
             "email": "and.webdev@gmail.com"
+        },
+        {
+          "name": "Roman Krhovjak"
         }
     ],
     "minimum-stability": "alpha",
     "require": {
-	    "php"               : ">=5.4.0",
-	    "symfony/validator" : "~2.3.3",
-            "doctrine/common"   : "~2.4",
-            "kriswallsmith/buzz": "~0.10",
-            "fergusean/nusoap": "~0.9.5",
-            "symfony/css-selector": "3.0.9",
-            "symfony/dom-crawler": "3.0.9"
+        "php": ">=5.4.0",
+        "symfony/validator": "~3.0",
+        "doctrine/common": "~2.4",
+        "kriswallsmith/buzz": "~0.10",
+        "fergusean/nusoap": "~0.9.5",
+        "symfony/css-selector": "3.0.9",
+        "symfony/dom-crawler": "3.0.9"
     },
-	"autoload": {
-		"psr-4": {
-			"GLS\\": "src/"
-		}
-	}
+    "autoload": {
+        "psr-4": {
+            "GLS\\": "src/"
+        }
+    }
 }
